@@ -9,7 +9,7 @@ function Home() {
           <Navbar.Brand href="#home">
             <img
               alt=""
-              src="blob:https://web.telegram.org/88fe14ca-aee4-454d-b5f5-46844cff376b"
+              src="https://drive.google.com/uc?export=view&id=1M3oSvZbaZ7XviSUlZ6CNk3Ib_mZ4bDU3"
               width="30"
               height="30"
               className="d-inline-block align-top"
