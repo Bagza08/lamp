@@ -1,3 +1,15 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
 model User {
   id           String         @id @unique @default(uuid())
   name         String
@@ -10,12 +22,16 @@ model User {
   Teacher      Teacher[]
   Student      Student[]
   User_Comment User_Comment[]
+
+  @@map("users")
 }
 
 model Admin {
   id     String @id @unique @default(uuid())
   user User   @relation(fields: [userId], references: [id])
   userId String
+  @@index([userId])
+  @@map("admins")
 }
 
 model Teacher_Course {
@@ -24,6 +40,11 @@ model Teacher_Course {
   course  Course   @relation(fields: [courseId], references: [id])
   teacherId String?
   courseId  String
+
+  @@index([teacherId])
+  @@index([courseId])
+
+  @@map("teacher_courses")
 }
 
 model Teacher {
@@ -31,12 +52,17 @@ model Teacher {
   user         User             @relation(fields: [userId], references: [id])
   Teacher_Course Teacher_Course[]
   userId         String
+
+  @@index([userId])
+  @@map("teachers")
 }
 
 model Student {
   id     String @id @unique @default(uuid())
   user User   @relation(fields: [userId], references: [id])
   userId String
+@@index([userId])
+@@map("students")
 }
 
 model Course {
@@ -45,6 +71,8 @@ model Course {
   description    String?
   content        String
   Teacher_Course Teacher_Course[]
+
+  @@map("courses")
 }
 
 model User_Comment {
@@ -53,6 +81,10 @@ model User_Comment {
   comment Comment @relation(fields: [commentId], references: [id])
   userId    String
   commentId String
+
+  @@index([userId])
+  @@index([commentId])
+  @@map("user_comments")
 }
 
 model Comment {
@@ -61,4 +93,6 @@ model Comment {
   createdAt       DateTime       @default(now())
   updatedAt       DateTime       @default(now())
   User_Comment    User_Comment[]
+
+  @@map("comments")
 }
