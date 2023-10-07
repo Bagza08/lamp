@@ -5,6 +5,8 @@ import RegisterSd from "./features/home/component/RegisterSd";
 import Role from "./features/home/component/Role";
 import LoginSd from "./features/home/component/LoginSd";
 import RegisterTc from "./features/home/component/RegisterTc";
+import CardDetail from "./features/home/component/CardDetail";
+import DasboardTeacher from "./features/home/component/DasboardTeacher";
 
 function App() {
   return (
@@ -16,6 +18,8 @@ function App() {
         <Route path="/login/student" element={<LoginSd />} />
         <Route path="/register/teacher" element={<RegisterTc />} />
         <Route path="/register/student" element={<RegisterSd />} />
+        <Route path="/carddetail" element={<CardDetail />} />
+        <Route path="/DasboardTeacher" element={<DasboardTeacher />} />
       </Routes>
     </>
   );
