@@ -1,27 +1,29 @@
+"use client";
+
 import {
   Flex,
   Box,
   FormControl,
   FormLabel,
   Input,
+  InputGroup,
+  InputRightElement,
+  Image,
   Stack,
   Button,
   Heading,
   Text,
   useColorModeValue,
-  Image,
-  InputGroup,
   Center,
-  InputRightElement,
 } from "@chakra-ui/react";
-
-import image2 from "../../../assets/teacher.png";
-import { ViewIcon, ViewOffIcon } from "@chakra-ui/icons";
 import { useState } from "react";
+import { ViewIcon, ViewOffIcon } from "@chakra-ui/icons";
+import image1 from "../../../assets/students.png";
 import { Link } from "react-router-dom";
 
-export default function LoginTc() {
+export default function RegisterSd() {
   const [showPassword, setShowPassword] = useState(false);
+
   return (
     <>
       <Flex
@@ -30,20 +32,22 @@ export default function LoginTc() {
         justify={"center"}
         bg={useColorModeValue("gray.50", "gray.800")}
       >
-        <Stack spacing={8} mx={"auto"} maxW={"lg"}>
+        <Stack spacing={8} mx={"auto"} maxW={"xl"} py={5} px={4}>
           <Stack align={"center"} color={"#192C33"}>
-            <Heading fontSize={"4xl"}>Sign in to your account</Heading>
+            <Heading fontSize={"4xl"} textAlign={"center"}>
+              Sign up for new account
+            </Heading>
             <Flex
-              mt={"15px"}
+              mt={"10px"}
               borderRadius={"full"}
-              w={"70px"}
-              h={"70px"}
+              w={"50px"}
+              h={"50px"}
               bg={"#192C33"}
               flexDirection={"column"}
               justifyContent={"center"}
               alignItems={"center"}
             >
-              <Image src={image2} w={"300px"} />
+              <Image src={image1} w={"300px"} />
             </Flex>
           </Stack>
           <Box
@@ -51,8 +55,17 @@ export default function LoginTc() {
             bg={useColorModeValue("white", "gray.700")}
             boxShadow={"lg"}
             p={8}
+            width={"400px"}
           >
             <Stack spacing={4}>
+              <FormControl id="email">
+                <FormLabel>Name</FormLabel>
+                <Input
+                  type="email"
+                  borderColor={"#192C33"}
+                  borderRadius={"full"}
+                />
+              </FormControl>
               <FormControl id="email">
                 <FormLabel>Email address</FormLabel>
                 <Input
@@ -83,19 +96,10 @@ export default function LoginTc() {
                   </InputRightElement>
                 </InputGroup>
               </FormControl>
-              <Stack spacing={6}>
-                {/* <Stack
-                  direction={{ base: "column", sm: "row" }}
-                  align={"start"}
-                  justify={"space-between"}
-                >
-                  <Checkbox>Remember me</Checkbox>
-                  <Text color={"blue.400"}>Forgot password?</Text>
-                </Stack> */}
+              <Stack spacing={3} mt={"15px"}>
                 <Button
-                  mt={"7px"}
                   borderRadius={"full"}
-                  bg={"#192C33"}
+                  bg={"#1BB4AD"}
                   color={"white"}
                   _hover={{
                     color: "#192C33",
@@ -103,13 +107,13 @@ export default function LoginTc() {
                     transition: "background-color .5s, color .5s",
                   }}
                 >
-                  Sign in
+                  Sign up
                 </Button>
                 <Center>
                   <Flex color={"#192C33"} flexDirection={"row"} gap={2}>
-                    <Text>Don't Have an Account?</Text>
-                    <Link to={"/register/teacher"}>
-                      <Text color={"yellow.500"}>Register</Text>
+                    <Text>Have Already an Account?</Text>
+                    <Link to={"/login/student"}>
+                      <Text color={"#1BB4AD"}>Login</Text>
                     </Link>
                   </Flex>
                 </Center>

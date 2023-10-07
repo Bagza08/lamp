@@ -11,11 +11,18 @@ import {
   Text,
   useColorModeValue,
   Image,
+  Center,
+  InputGroup,
+  InputRightElement,
 } from "@chakra-ui/react";
 
 import image1 from "../../../assets/students.png";
+import { Link } from "react-router-dom";
+import { useState } from "react";
+import { ViewIcon, ViewOffIcon } from "@chakra-ui/icons";
 
 export default function LoginSd() {
+  const [showPassword, setShowPassword] = useState(false);
   return (
     <>
       <Flex
@@ -24,7 +31,7 @@ export default function LoginSd() {
         justify={"center"}
         bg={useColorModeValue("gray.50", "gray.800")}
       >
-        <Stack spacing={8} mx={"auto"} maxW={"lg"} py={12} px={6}>
+        <Stack spacing={8} mx={"auto"} maxW={"lg"}>
           <Stack align={"center"} color={"#192C33"}>
             <Heading fontSize={"4xl"}>Sign in to your account</Heading>
             <Flex
@@ -57,22 +64,37 @@ export default function LoginSd() {
               </FormControl>
               <FormControl id="password">
                 <FormLabel>Password</FormLabel>
-                <Input
-                  type="password"
-                  borderColor={"#192C33"}
-                  borderRadius={"full"}
-                />
+                <InputGroup>
+                  <Input
+                    type={showPassword ? "text" : "password"}
+                    borderRadius={"full"}
+                    borderColor={"#192C33"}
+                  />
+                  <InputRightElement h={"full"}>
+                    <Button
+                      size={"sm"}
+                      borderRadius={"full"}
+                      variant={"ghost"}
+                      onClick={() =>
+                        setShowPassword((showPassword) => !showPassword)
+                      }
+                    >
+                      {showPassword ? <ViewIcon /> : <ViewOffIcon />}
+                    </Button>
+                  </InputRightElement>
+                </InputGroup>
               </FormControl>
-              <Stack spacing={10}>
-                <Stack
+              <Stack spacing={6}>
+                {/* <Stack
                   direction={{ base: "column", sm: "row" }}
                   align={"start"}
                   justify={"space-between"}
                 >
                   <Checkbox>Remember me</Checkbox>
                   <Text color={"blue.400"}>Forgot password?</Text>
-                </Stack>
+                </Stack> */}
                 <Button
+                  mt={"7px"}
                   borderRadius={"full"}
                   bg={"#1BB4AD"}
                   color={"white"}
@@ -84,6 +106,14 @@ export default function LoginSd() {
                 >
                   Sign in
                 </Button>
+                <Center>
+                  <Flex color={"#192C33"} flexDirection={"row"} gap={2}>
+                    <Text>Don't Have an Account?</Text>
+                    <Link to={"/register/student"}>
+                      <Text color={"#1BB4AD"}>Register</Text>
+                    </Link>
+                  </Flex>
+                </Center>
               </Stack>
             </Stack>
           </Box>

@@ -7,7 +7,7 @@ export default function Role() {
   return (
     <>
       <Flex flexDirection={"row"}>
-        <Link to={"/logintc"} style={{ width: "50%" }}>
+        <Link to={"/login/teacher"} style={{ width: "50%" }}>
           <Flex
             _hover={{
               backgroundColor: "yellow.500",
@@ -51,7 +51,7 @@ export default function Role() {
             </Text>
           </Flex>
         </Link>
-        <Link to={"/loginsd"} style={{ width: "50%" }}>
+        <Link to={"/login/student"} style={{ width: "50%" }}>
           <Flex
             _hover={{
               backgroundColor: "yellow.500",
