@@ -1,5 +1,5 @@
-import { Navbar } from "react-bootstrap";
 import Container from "react-bootstrap/Container";
+import Navbar from "react-bootstrap/Navbar";
 
 function Home() {
   return (
@@ -13,7 +13,7 @@ function Home() {
               width="30"
               height="30"
               className="d-inline-block align-top"
-            />
+            />{" "}
             L.A.M.P
           </Navbar.Brand>
         </Container>
