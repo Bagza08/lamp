@@ -19,9 +19,11 @@ import image2 from "../../../assets/teacher.png";
 import { ViewIcon, ViewOffIcon } from "@chakra-ui/icons";
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import { useLogin } from "../../../hooks/loginHooks";
 
 export default function LoginTc() {
   const [showPassword, setShowPassword] = useState(false);
+  const { handleLogin, handChange } = useLogin();
   return (
     <>
       <Flex
@@ -56,6 +58,8 @@ export default function LoginTc() {
               <FormControl id="email">
                 <FormLabel>Email address</FormLabel>
                 <Input
+                  name="email"
+                  onChange={handChange}
                   type="email"
                   borderColor={"#192C33"}
                   borderRadius={"full"}
@@ -65,6 +69,8 @@ export default function LoginTc() {
                 <FormLabel>Password</FormLabel>
                 <InputGroup>
                   <Input
+                    name="password"
+                    onChange={handChange}
                     type={showPassword ? "text" : "password"}
                     borderRadius={"full"}
                     borderColor={"#192C33"}
@@ -93,6 +99,7 @@ export default function LoginTc() {
                   <Text color={"blue.400"}>Forgot password?</Text>
                 </Stack> */}
                 <Button
+                  onClick={handleLogin}
                   mt={"7px"}
                   borderRadius={"full"}
                   bg={"#192C33"}
