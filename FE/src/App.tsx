@@ -7,6 +7,7 @@ import LoginSd from "./features/home/component/LoginSd";
 import RegisterTc from "./features/home/component/RegisterTc";
 import CardDetail from "./features/home/component/CardDetail";
 import DasboardTeacher from "./features/home/component/DasboardTeacher";
+import SidebarWithHeader from "./features/home/component/Learn";
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
         <Route path="/register/student" element={<RegisterSd />} />
         <Route path="/carddetail" element={<CardDetail />} />
         <Route path="/DasboardTeacher" element={<DasboardTeacher />} />
+        <Route path="/learn" element={<SidebarWithHeader />} />
       </Routes>
     </>
   );

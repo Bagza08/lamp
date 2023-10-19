@@ -13,12 +13,10 @@ import {
   Link,
   AspectRatio,
   CardBody,
-  CardFooter,
   CardHeader,
-  Heading,
 } from "@chakra-ui/react";
 import { useState, useEffect } from "react";
-import logo from "../../../assets/logo/lamplogo.png";
+import logo from "../../../assets/logo/lamp-logo.png";
 import {
   GoHomeFill,
   GoVideo,
@@ -452,7 +450,7 @@ export function DasboardTeacher() {
                   src="https://bit.ly/code-beast"
                 />
               </Box>
-              <CardHeader>
+              <CardHeader gap>
                 <Text fontSize="larger" fontWeight="extrabold">
                   {" "}
                   Guru Spiritual
@@ -468,7 +466,7 @@ export function DasboardTeacher() {
           </Box>
         </GridItem>
       </Grid>
-      {/* <Grid
+      <Grid
         h="800px"
         templateRows="repeat(2, 1fr)"
         templateColumns="repeat(5, 1fr)"
@@ -477,11 +475,9 @@ export function DasboardTeacher() {
         <GridItem rowSpan={2} colSpan={1} bg="tomato" pos="fixed">
           asdnasndalsdnalsnd alsdna Sunda{" "}
         </GridItem>
-        <GridItem h="100px" colSpan={4} bg="tomato" pos="fixed">
-        </GridItem>
-        <GridItem h="100vh" colSpan={4} bg="papayawhip">
-        </GridItem>
-      </Grid> */}
+        <GridItem h="100px" colSpan={4} bg="tomato" pos="fixed"></GridItem>
+        <GridItem h="100vh" colSpan={4} bg="papayawhip"></GridItem>
+      </Grid>
     </>
   );
 }

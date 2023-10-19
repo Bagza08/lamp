@@ -12,7 +12,7 @@ import {
 } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
 
-import logo from "../assets/logo/lamplogo.png";
+import logo from "../assets/logo/lamp-logo.png";
 
 export default function HeadBar() {
   return (

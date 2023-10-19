@@ -1,12 +1,39 @@
 "use client";
 
-import { Box, Button, Text, Image, Flex, Card } from "@chakra-ui/react";
+import {
+  Box,
+  Button,
+  Text,
+  Image,
+  Flex,
+  Card,
+  CardBody,
+  Stack,
+  Heading,
+  Divider,
+  ButtonGroup,
+  CardFooter,
+  Grid,
+  GridItem,
+  Container,
+} from "@chakra-ui/react";
 import Slider from "react-slick";
 import { useEffect, useState } from "react";
 import React from "react";
 import HeadBar from "../../../components/HeadBar";
 import { Link } from "react-router-dom";
 import Typed from "typed.js";
+import homelogo from "../../../assets/logo/bg-home.jpeg";
+import Carousel from "react-multi-carousel";
+import "react-multi-carousel/lib/styles.css";
+import {
+  BsClock,
+  BsGraphUpArrow,
+  BsPeople,
+  BsFillBookFill,
+  BsStarHalf,
+} from "react-icons/bs";
+import { AiFillCheckCircle } from "react-icons/ai";
 
 const settings = {
   dots: true,
@@ -60,26 +87,27 @@ export function Home() {
   const cardData = [
     {
       image:
-        "https://images.unsplash.com/photo-1636955735635-b4c0fd54f360?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
-      title: "Judul Artikel 1",
-      description: "Ini adalah description Moduls Lorem ipsum dolor sit amet",
+        "https://images.unsplash.com/photo-1618477388954-7852f32655ec?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8d2ViJTIwZGV2ZWxvcGVyfGVufDB8fDB8fHww&auto=format&fit=crop&w=500&q=60",
+      title: "Data Analist",
+      description: "Belajar data Analist",
     },
     {
       image:
-        "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTZ8fHZla3RvcnxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=600&q=60",
-      title: "Judul Artikel 2",
-      description: "Ini adalah description Moduls Lorem ipsum dolor sit amet",
+        "https://images.unsplash.com/photo-1624996752380-8ec242e0f85d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fHdlYiUyMGRldmVsb3BlcnxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=60",
+      title: "Backend Web Developer",
+      description: "Belajar pemrograman TypeScript dari pemula",
     },
     {
       image:
-        "https://images.unsplash.com/photo-1452696193712-6cabf5103b63?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8dmVrdG9yfGVufDB8fDB8fHww&auto=format&fit=crop&w=600&q=60",
-      title: "Judul Artikel 3",
-      description: "Ini adalah description Moduls Lorem ipsum dolor sit amet",
+        "https://images.unsplash.com/photo-1599837565318-67429bde7162?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1yZWxhdGVkfDd8fHxlbnwwfHx8fHw%3D&auto=format&fit=crop&w=500&q=60",
+      title: "Frontend Web Developer",
+      description:
+        "Belajar database PostgreSQL dari pemula sampai mahir disertai studi kasus",
     },
     {
       image:
-        "https://images.unsplash.com/photo-1597008641621-cefdcf718025?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8dmVrdG9yfGVufDB8fDB8fHww&auto=format&fit=crop&w=600&q=60",
-      title: "Judul Artikel 4",
+        "https://plus.unsplash.com/premium_photo-1668198395291-d87bba7d5b16?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1yZWxhdGVkfDh8fHxlbnwwfHx8fHw%3D&auto=format&fit=crop&w=500&q=60",
+      title: "Data Analist",
       description: "Ini adalah description Moduls Lorem ipsum dolor sit amet",
     },
     {
@@ -124,8 +152,27 @@ export function Home() {
     };
   }, []);
 
+  const responsive = {
+    superLargeDesktop: {
+      breakpoint: { max: 4000, min: 3000 },
+      items: 5,
+    },
+    desktop: {
+      breakpoint: { max: 3000, min: 1024 },
+      items: 4,
+    },
+    tablet: {
+      breakpoint: { max: 1024, min: 464 },
+      items: 2,
+    },
+    mobile: {
+      breakpoint: { max: 464, min: 0 },
+      items: 1,
+    },
+  };
+
   return (
-    <>
+    <Box bg={"#eaeaea"}>
       <HeadBar />
       <Box
         display={"flex"}
@@ -138,9 +185,11 @@ export function Home() {
         bgRepeat={"no-repeat"}
         h="70vh"
         mt="90px"
-        bgImage={
-          "https://images.unsplash.com/photo-1638008606285-9407f1700ba4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"
-        }
+        bgImage={homelogo}
+        style={{
+          backgroundPosition: "center button", // Mengatur posisi latar belakang ke tengah vertikal dan ke atas.
+          backgroundSize: "cover", // Mengatur latar belakang untuk menutupi seluruh elemen.
+        }}
       >
         <Flex
           px={"7"}
@@ -265,7 +314,7 @@ export function Home() {
                 maxH="400px"
                 position={"relative"}
                 borderRadius={"15px"}
-                mr={index === visibleCards.length - 1 ? "0" : "20px"} // Jarak antar kartu
+                mr={index === visibleCards.length - 1 ? "0" : "20px"}
               >
                 <Image
                   w="100%"
@@ -310,7 +359,909 @@ export function Home() {
           </Button>
         </Flex>
       </Box>
-    </>
+
+      <Box ms={"125px"} width={"85%"} alignItems={"center"} my="5">
+        <Text color={"blackAlpha.600"} fontWeight={"semibold"} fontSize={"3xl"}>
+          Kelas Terbaru
+        </Text>
+      </Box>
+
+      <Flex
+        w={"100%"}
+        gap={3}
+        justifyContent={"center"}
+        color={"blackAlpha.100"}
+        boxShadow={"md"}
+        objectFit={"cover"}
+        bgRepeat={"no-repeat"}
+        h="75vh"
+        p={"5"}
+      >
+        <Box width={"85%"} gap={5} ps={"20px"}>
+          <Carousel responsive={responsive}>
+            <Card
+              width="100%"
+              height="100%"
+              maxW={"260px"}
+              borderRadius={"10px"}
+            >
+              <Image
+                src="https://images.unsplash.com/photo-1593118247619-e2d6f056869e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1yZWxhdGVkfDJ8fHxlbnwwfHx8fHw%3D&auto=format&fit=crop&w=500&q=60"
+                alt="Green double couch with wooden legs"
+                objectFit={"cover"}
+                borderRadius="10px 10px 0px 0px"
+              />
+              <Flex alignItems="center" gap="3" ms="3" mt="3">
+                <Text color="blackAlpha.700" fontWeight="semibold">
+                  By Bagja sugana
+                </Text>
+                <AiFillCheckCircle color="#279EFF" size="20px" />
+              </Flex>
+              <Heading mt="3" ms="3" size="md">
+                Belajar Bahasa Sunda
+              </Heading>
+              <Grid
+                templateColumns="repeat(2, 1fr)"
+                templateRows="repeat(2, 1fr)"
+                gap={2}
+                m="4"
+              >
+                <GridItem w="100%" h="10">
+                  <Flex alignItems="center">
+                    <BsGraphUpArrow />
+                    <Text ms="2" color="blackAlpha.700" fontWeight="semibold">
+                      content
+                    </Text>
+                  </Flex>
+                </GridItem>
+                <GridItem w="100%" h="10">
+                  <Flex alignItems="center">
+                    <BsClock />
+                    <Text ms="2" color="blackAlpha.700" fontWeight="semibold">
+                      content
+                    </Text>
+                  </Flex>
+                </GridItem>
+                <GridItem w="100%" h="10">
+                  <Flex alignItems="center">
+                    <BsPeople />
+                    <Text ms="2" color="blackAlpha.700" fontWeight="semibold">
+                      content
+                    </Text>
+                  </Flex>
+                </GridItem>
+                <GridItem w="100%" h="10">
+                  <Flex alignItems="center">
+                    <BsFillBookFill />
+                    <Text ms="2" color="blackAlpha.700" fontWeight="semibold">
+                      content
+                    </Text>
+                  </Flex>
+                </GridItem>
+              </Grid>
+              <Flex alignItems="center" columnGap="3" ms="4">
+                <BsStarHalf color="#FFC436" />
+                <Text color="#FFC436" fontWeight="semibold">
+                  4,8
+                </Text>
+                <Text color="blackAlpha.700" fontWeight="semibold">
+                  penilaian
+                </Text>
+              </Flex>
+              <Divider
+                orientation="horizontal"
+                borderColor="grey"
+                height="10px"
+              />
+              <Text
+                color="blackAlpha.700"
+                fontWeight="semibold"
+                m="2"
+                textAlign="end"
+              >
+                Join Sekarang
+              </Text>
+            </Card>
+            <Card
+              width="100%"
+              height="100%"
+              maxW={"260px"}
+              borderRadius={"10px"}
+            >
+              <Image
+                src="https://images.unsplash.com/photo-1590845947376-2638caa89309?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1yZWxhdGVkfDJ8fHxlbnwwfHx8fHw%3D&auto=format&fit=crop&w=500&q=60"
+                objectFit={"cover"}
+                borderRadius="10px 10px 0px 0px"
+              />
+              <Flex alignItems="center" gap="3" ms="3" mt="3">
+                <Text color="blackAlpha.700" fontWeight="semibold">
+                  By Surya Insomnia
+                </Text>
+                <AiFillCheckCircle color="#279EFF" size="20px" />
+              </Flex>
+              <Heading mt="3" ms="3" size="md">
+                Belajar Bahasa Sunda
+              </Heading>
+              <Grid
+                templateColumns="repeat(2, 1fr)"
+                templateRows="repeat(2, 1fr)"
+                gap={2}
+                m="4"
+              >
+                <GridItem w="100%" h="10">
+                  <Flex alignItems="center">
+                    <BsGraphUpArrow />
+                    <Text ms="2" color="blackAlpha.700" fontWeight="semibold">
+                      content
+                    </Text>
+                  </Flex>
+                </GridItem>
+                <GridItem w="100%" h="10">
+                  <Flex alignItems="center">
+                    <BsClock />
+                    <Text ms="2" color="blackAlpha.700" fontWeight="semibold">
+                      content
+                    </Text>
+                  </Flex>
+                </GridItem>
+                <GridItem w="100%" h="10">
+                  <Flex alignItems="center">
+                    <BsPeople />
+                    <Text ms="2" color="blackAlpha.700" fontWeight="semibold">
+                      content
+                    </Text>
+                  </Flex>
+                </GridItem>
+                <GridItem w="100%" h="10">
+                  <Flex alignItems="center">
+                    <BsFillBookFill />
+                    <Text ms="2" color="blackAlpha.700" fontWeight="semibold">
+                      content
+                    </Text>
+                  </Flex>
+                </GridItem>
+              </Grid>
+              <Flex alignItems="center" columnGap="3" ms="4">
+                <BsStarHalf color="#FFC436" />
+                <Text color="#FFC436" fontWeight="semibold">
+                  4,8
+                </Text>
+                <Text color="blackAlpha.700" fontWeight="semibold">
+                  penilaian
+                </Text>
+              </Flex>
+              <Divider
+                orientation="horizontal"
+                borderColor="grey"
+                height="10px"
+              />
+              <Text
+                color="blackAlpha.700"
+                fontWeight="semibold"
+                m="2"
+                textAlign="end"
+              >
+                Join Sekarang
+              </Text>
+            </Card>
+            <Card
+              width="100%"
+              height="100%"
+              maxW={"260px"}
+              borderRadius={"10px"}
+            >
+              <Image
+                src="https://images.unsplash.com/photo-1580327344181-c1163234e5a0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1yZWxhdGVkfDEyfHx8ZW58MHx8fHx8&auto=format&fit=crop&w=500&q=60"
+                objectFit={"cover"}
+                borderRadius="10px 10px 0px 0px"
+              />
+              <Flex alignItems="center" gap="3" ms="3" mt="3">
+                <Text color="blackAlpha.700" fontWeight="semibold">
+                  By Ilham Ramadhan
+                </Text>
+                <AiFillCheckCircle color="#279EFF" size="20px" />
+              </Flex>
+              <Heading mt="3" ms="3" size="md">
+                Belajar Bahasa Sunda
+              </Heading>
+              <Grid
+                templateColumns="repeat(2, 1fr)"
+                templateRows="repeat(2, 1fr)"
+                gap={2}
+                m="4"
+              >
+                <GridItem w="100%" h="10">
+                  <Flex alignItems="center">
+                    <BsGraphUpArrow />
+                    <Text ms="2" color="blackAlpha.700" fontWeight="semibold">
+                      content
+                    </Text>
+                  </Flex>
+                </GridItem>
+                <GridItem w="100%" h="10">
+                  <Flex alignItems="center">
+                    <BsClock />
+                    <Text ms="2" color="blackAlpha.700" fontWeight="semibold">
+                      content
+                    </Text>
+                  </Flex>
+                </GridItem>
+                <GridItem w="100%" h="10">
+                  <Flex alignItems="center">
+                    <BsPeople />
+                    <Text ms="2" color="blackAlpha.700" fontWeight="semibold">
+                      content
+                    </Text>
+                  </Flex>
+                </GridItem>
+                <GridItem w="100%" h="10">
+                  <Flex alignItems="center">
+                    <BsFillBookFill />
+                    <Text ms="2" color="blackAlpha.700" fontWeight="semibold">
+                      content
+                    </Text>
+                  </Flex>
+                </GridItem>
+              </Grid>
+              <Flex alignItems="center" columnGap="3" ms="4">
+                <BsStarHalf color="#FFC436" />
+                <Text color="#FFC436" fontWeight="semibold">
+                  4,8
+                </Text>
+                <Text color="blackAlpha.700" fontWeight="semibold">
+                  penilaian
+                </Text>
+              </Flex>
+              <Divider
+                orientation="horizontal"
+                borderColor="grey"
+                height="10px"
+              />
+              <Text
+                color="blackAlpha.700"
+                fontWeight="semibold"
+                m="2"
+                textAlign="end"
+              >
+                Join Sekarang
+              </Text>
+            </Card>
+            <Card
+              width="100%"
+              height="100%"
+              maxW={"260px"}
+              borderRadius={"10px"}
+            >
+              <Image
+                src="https://images.unsplash.com/photo-1592155931584-901ac15763e3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1yZWxhdGVkfDE0fHx8ZW58MHx8fHx8&auto=format&fit=crop&w=500&q=60"
+                objectFit={"cover"}
+                borderRadius="10px 10px 0px 0px"
+              />
+              <Flex alignItems="center" gap="3" ms="3" mt="3">
+                <Text color="blackAlpha.700" fontWeight="semibold">
+                  By Hellen amir
+                </Text>
+                <AiFillCheckCircle color="#279EFF" size="20px" />
+              </Flex>
+              <Heading mt="3" ms="3" size="md">
+                Belajar Bahasa Inggris
+              </Heading>
+              <Grid
+                templateColumns="repeat(2, 1fr)"
+                templateRows="repeat(2, 1fr)"
+                gap={2}
+                m="4"
+              >
+                <GridItem w="100%" h="10">
+                  <Flex alignItems="center">
+                    <BsGraphUpArrow />
+                    <Text ms="2" color="blackAlpha.700" fontWeight="semibold">
+                      content
+                    </Text>
+                  </Flex>
+                </GridItem>
+                <GridItem w="100%" h="10">
+                  <Flex alignItems="center">
+                    <BsClock />
+                    <Text ms="2" color="blackAlpha.700" fontWeight="semibold">
+                      content
+                    </Text>
+                  </Flex>
+                </GridItem>
+                <GridItem w="100%" h="10">
+                  <Flex alignItems="center">
+                    <BsPeople />
+                    <Text ms="2" color="blackAlpha.700" fontWeight="semibold">
+                      content
+                    </Text>
+                  </Flex>
+                </GridItem>
+                <GridItem w="100%" h="10">
+                  <Flex alignItems="center">
+                    <BsFillBookFill />
+                    <Text ms="2" color="blackAlpha.700" fontWeight="semibold">
+                      content
+                    </Text>
+                  </Flex>
+                </GridItem>
+              </Grid>
+              <Flex alignItems="center" columnGap="3" ms="4">
+                <BsStarHalf color="#FFC436" />
+                <Text color="#FFC436" fontWeight="semibold">
+                  4,8
+                </Text>
+                <Text color="blackAlpha.700" fontWeight="semibold">
+                  penilaian
+                </Text>
+              </Flex>
+              <Divider
+                orientation="horizontal"
+                borderColor="grey"
+                height="10px"
+              />
+              <Text
+                color="blackAlpha.700"
+                fontWeight="semibold"
+                m="2"
+                textAlign="end"
+              >
+                Join Sekarang
+              </Text>
+            </Card>
+            <Card
+              width="100%"
+              height="100%"
+              maxW={"260px"}
+              borderRadius={"10px"}
+            >
+              <Image
+                src="https://images.unsplash.com/photo-1593118247619-e2d6f056869e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1yZWxhdGVkfDJ8fHxlbnwwfHx8fHw%3D&auto=format&fit=crop&w=500&q=60"
+                alt="Green double couch with wooden legs"
+                objectFit={"cover"}
+                borderRadius="10px 10px 0px 0px"
+              />
+              <Flex alignItems="center" gap="3" ms="3" mt="3">
+                <Text color="blackAlpha.700" fontWeight="semibold">
+                  By Bagja sugana
+                </Text>
+                <AiFillCheckCircle color="#279EFF" size="20px" />
+              </Flex>
+              <Heading mt="3" ms="3" size="md">
+                Belajar Bahasa Sunda
+              </Heading>
+              <Grid
+                templateColumns="repeat(2, 1fr)"
+                templateRows="repeat(2, 1fr)"
+                gap={2}
+                m="4"
+              >
+                <GridItem w="100%" h="10">
+                  <Flex alignItems="center">
+                    <BsGraphUpArrow />
+                    <Text ms="2" color="blackAlpha.700" fontWeight="semibold">
+                      content
+                    </Text>
+                  </Flex>
+                </GridItem>
+                <GridItem w="100%" h="10">
+                  <Flex alignItems="center">
+                    <BsClock />
+                    <Text ms="2" color="blackAlpha.700" fontWeight="semibold">
+                      content
+                    </Text>
+                  </Flex>
+                </GridItem>
+                <GridItem w="100%" h="10">
+                  <Flex alignItems="center">
+                    <BsPeople />
+                    <Text ms="2" color="blackAlpha.700" fontWeight="semibold">
+                      content
+                    </Text>
+                  </Flex>
+                </GridItem>
+                <GridItem w="100%" h="10">
+                  <Flex alignItems="center">
+                    <BsFillBookFill />
+                    <Text ms="2" color="blackAlpha.700" fontWeight="semibold">
+                      content
+                    </Text>
+                  </Flex>
+                </GridItem>
+              </Grid>
+              <Flex alignItems="center" columnGap="3" ms="4">
+                <BsStarHalf color="#FFC436" />
+                <Text color="#FFC436" fontWeight="semibold">
+                  4,8
+                </Text>
+                <Text color="blackAlpha.700" fontWeight="semibold">
+                  penilaian
+                </Text>
+              </Flex>
+              <Divider
+                orientation="horizontal"
+                borderColor="grey"
+                height="10px"
+              />
+              <Text
+                color="blackAlpha.700"
+                fontWeight="semibold"
+                m="2"
+                textAlign="end"
+              >
+                Join Sekarang
+              </Text>
+            </Card>
+            <Card
+              width="100%"
+              height="100%"
+              maxW={"260px"}
+              borderRadius={"10px"}
+            >
+              <Image
+                src="https://images.unsplash.com/photo-1593118247619-e2d6f056869e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1yZWxhdGVkfDJ8fHxlbnwwfHx8fHw%3D&auto=format&fit=crop&w=500&q=60"
+                alt="Green double couch with wooden legs"
+                objectFit={"cover"}
+                borderRadius="10px 10px 0px 0px"
+              />
+              <Flex alignItems="center" gap="3" ms="3" mt="3">
+                <Text color="blackAlpha.700" fontWeight="semibold">
+                  By Bagja sugana
+                </Text>
+                <AiFillCheckCircle color="#279EFF" size="20px" />
+              </Flex>
+              <Heading mt="3" ms="3" size="md">
+                Belajar Bahasa Sunda
+              </Heading>
+              <Grid
+                templateColumns="repeat(2, 1fr)"
+                templateRows="repeat(2, 1fr)"
+                gap={2}
+                m="4"
+              >
+                <GridItem w="100%" h="10">
+                  <Flex alignItems="center">
+                    <BsGraphUpArrow />
+                    <Text ms="2" color="blackAlpha.700" fontWeight="semibold">
+                      content
+                    </Text>
+                  </Flex>
+                </GridItem>
+                <GridItem w="100%" h="10">
+                  <Flex alignItems="center">
+                    <BsClock />
+                    <Text ms="2" color="blackAlpha.700" fontWeight="semibold">
+                      content
+                    </Text>
+                  </Flex>
+                </GridItem>
+                <GridItem w="100%" h="10">
+                  <Flex alignItems="center">
+                    <BsPeople />
+                    <Text ms="2" color="blackAlpha.700" fontWeight="semibold">
+                      content
+                    </Text>
+                  </Flex>
+                </GridItem>
+                <GridItem w="100%" h="10">
+                  <Flex alignItems="center">
+                    <BsFillBookFill />
+                    <Text ms="2" color="blackAlpha.700" fontWeight="semibold">
+                      content
+                    </Text>
+                  </Flex>
+                </GridItem>
+              </Grid>
+              <Flex alignItems="center" columnGap="3" ms="4">
+                <BsStarHalf color="#FFC436" />
+                <Text color="#FFC436" fontWeight="semibold">
+                  4,8
+                </Text>
+                <Text color="blackAlpha.700" fontWeight="semibold">
+                  penilaian
+                </Text>
+              </Flex>
+              <Divider
+                orientation="horizontal"
+                borderColor="grey"
+                height="10px"
+              />
+              <Text
+                color="blackAlpha.700"
+                fontWeight="semibold"
+                m="2"
+                textAlign="end"
+              >
+                Join Sekarang
+              </Text>
+            </Card>
+            <Card
+              width="100%"
+              height="100%"
+              maxW={"260px"}
+              borderRadius={"10px"}
+            >
+              <Image
+                src="https://images.unsplash.com/photo-1593118247619-e2d6f056869e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1yZWxhdGVkfDJ8fHxlbnwwfHx8fHw%3D&auto=format&fit=crop&w=500&q=60"
+                alt="Green double couch with wooden legs"
+                objectFit={"cover"}
+                borderRadius="10px 10px 0px 0px"
+              />
+              <Flex alignItems="center" gap="3" ms="3" mt="3">
+                <Text color="blackAlpha.700" fontWeight="semibold">
+                  By Bagja sugana
+                </Text>
+                <AiFillCheckCircle color="#279EFF" size="20px" />
+              </Flex>
+              <Heading mt="3" ms="3" size="md">
+                Belajar Bahasa Sunda
+              </Heading>
+              <Grid
+                templateColumns="repeat(2, 1fr)"
+                templateRows="repeat(2, 1fr)"
+                gap={2}
+                m="4"
+              >
+                <GridItem w="100%" h="10">
+                  <Flex alignItems="center">
+                    <BsGraphUpArrow />
+                    <Text ms="2" color="blackAlpha.700" fontWeight="semibold">
+                      content
+                    </Text>
+                  </Flex>
+                </GridItem>
+                <GridItem w="100%" h="10">
+                  <Flex alignItems="center">
+                    <BsClock />
+                    <Text ms="2" color="blackAlpha.700" fontWeight="semibold">
+                      content
+                    </Text>
+                  </Flex>
+                </GridItem>
+                <GridItem w="100%" h="10">
+                  <Flex alignItems="center">
+                    <BsPeople />
+                    <Text ms="2" color="blackAlpha.700" fontWeight="semibold">
+                      content
+                    </Text>
+                  </Flex>
+                </GridItem>
+                <GridItem w="100%" h="10">
+                  <Flex alignItems="center">
+                    <BsFillBookFill />
+                    <Text ms="2" color="blackAlpha.700" fontWeight="semibold">
+                      content
+                    </Text>
+                  </Flex>
+                </GridItem>
+              </Grid>
+              <Flex alignItems="center" columnGap="3" ms="4">
+                <BsStarHalf color="#FFC436" />
+                <Text color="#FFC436" fontWeight="semibold">
+                  4,8
+                </Text>
+                <Text color="blackAlpha.700" fontWeight="semibold">
+                  penilaian
+                </Text>
+              </Flex>
+              <Divider
+                orientation="horizontal"
+                borderColor="grey"
+                height="10px"
+              />
+              <Text
+                color="blackAlpha.700"
+                fontWeight="semibold"
+                m="2"
+                textAlign="end"
+              >
+                Join Sekarang
+              </Text>
+            </Card>
+          </Carousel>
+        </Box>
+      </Flex>
+      <Box ms={"125px"} width={"85%"} alignItems={"center"} my="5">
+        <Text color={"blackAlpha.600"} fontWeight={"semibold"} fontSize={"3xl"}>
+          Rekomendasi guru
+        </Text>
+      </Box>
+      <Flex
+        w={"100%"}
+        gap={3}
+        justifyContent={"center"}
+        color={"blackAlpha.100"}
+        boxShadow={"md"}
+        objectFit={"cover"}
+        bgRepeat={"no-repeat"}
+        h="50vh"
+        p={"5"}
+      >
+        <Box width={"80%"} gap={5}>
+          <Grid templateColumns="repeat(4, 1fr)" gap={5}>
+            <GridItem w="100%" h="20" p="2" borderRadius="15px" bg="white">
+              <Box
+                display={"flex"}
+                w="65px"
+                h="9vh"
+                borderRadius="10px"
+                bg="red"
+                gap="5"
+              >
+                <Image
+                  borderRadius={"10px"}
+                  objectFit={"cover"}
+                  w="100%"
+                  src="https://s3-alpha.figma.com/hub/file/2892125217/716d53e1-341c-43a7-a634-d5e175b01bcb-cover.png"
+                />
+                <Box>
+                  <Text
+                    fontWeight={"semibold"}
+                    fontSize={"large"}
+                    color={"blackAlpha.500"}
+                  >
+                    Figma
+                  </Text>
+                  <Text
+                    fontWeight={"semibold"}
+                    fontSize={"large"}
+                    color={"blackAlpha.500"}
+                    mt={"2"}
+                    w={"150px"}
+                  >
+                    Lorem Ipsum
+                  </Text>
+                </Box>
+              </Box>
+            </GridItem>
+            <GridItem w="100%" h="20" p="2" borderRadius="15px" bg="white">
+              <Box
+                display={"flex"}
+                w="65px"
+                h="9vh"
+                borderRadius="10px"
+                bg="red"
+                gap="5"
+              >
+                <Image
+                  borderRadius={"10px"}
+                  objectFit={"cover"}
+                  w="100%"
+                  src="https://s3-alpha.figma.com/hub/file/2892125217/716d53e1-341c-43a7-a634-d5e175b01bcb-cover.png"
+                />
+                <Box>
+                  <Text
+                    fontWeight={"semibold"}
+                    fontSize={"large"}
+                    color={"blackAlpha.500"}
+                  >
+                    Figma
+                  </Text>
+                  <Text
+                    fontWeight={"semibold"}
+                    fontSize={"large"}
+                    color={"blackAlpha.500"}
+                    mt={"2"}
+                    w={"150px"}
+                  >
+                    Lorem Ipsum
+                  </Text>
+                </Box>
+              </Box>
+            </GridItem>
+            <GridItem w="100%" h="20" p="2" borderRadius="15px" bg="white">
+              <Box
+                display={"flex"}
+                w="65px"
+                h="9vh"
+                borderRadius="10px"
+                bg="red"
+                gap="5"
+              >
+                <Image
+                  borderRadius={"10px"}
+                  objectFit={"cover"}
+                  w="100%"
+                  src="https://s3-alpha.figma.com/hub/file/2892125217/716d53e1-341c-43a7-a634-d5e175b01bcb-cover.png"
+                />
+                <Box>
+                  <Text
+                    fontWeight={"semibold"}
+                    fontSize={"large"}
+                    color={"blackAlpha.500"}
+                  >
+                    Figma
+                  </Text>
+                  <Text
+                    fontWeight={"semibold"}
+                    fontSize={"large"}
+                    color={"blackAlpha.500"}
+                    mt={"2"}
+                    w={"150px"}
+                  >
+                    Lorem Ipsum
+                  </Text>
+                </Box>
+              </Box>
+            </GridItem>
+            <GridItem w="100%" h="20" p="2" borderRadius="15px" bg="white">
+              <Box
+                display={"flex"}
+                w="65px"
+                h="9vh"
+                borderRadius="10px"
+                bg="red"
+                gap="5"
+              >
+                <Image
+                  borderRadius={"10px"}
+                  objectFit={"cover"}
+                  w="100%"
+                  src="https://s3-alpha.figma.com/hub/file/2892125217/716d53e1-341c-43a7-a634-d5e175b01bcb-cover.png"
+                />
+                <Box>
+                  <Text
+                    fontWeight={"semibold"}
+                    fontSize={"large"}
+                    color={"blackAlpha.500"}
+                  >
+                    Figma
+                  </Text>
+                  <Text
+                    fontWeight={"semibold"}
+                    fontSize={"large"}
+                    color={"blackAlpha.500"}
+                    mt={"2"}
+                    w={"150px"}
+                  >
+                    Lorem Ipsum
+                  </Text>
+                </Box>
+              </Box>
+            </GridItem>
+            <GridItem w="100%" h="20" p="2" borderRadius="15px" bg="white">
+              <Box
+                display={"flex"}
+                w="65px"
+                h="9vh"
+                borderRadius="10px"
+                bg="red"
+                gap="5"
+              >
+                <Image
+                  borderRadius={"10px"}
+                  objectFit={"cover"}
+                  w="100%"
+                  src="https://s3-alpha.figma.com/hub/file/2892125217/716d53e1-341c-43a7-a634-d5e175b01bcb-cover.png"
+                />
+                <Box>
+                  <Text
+                    fontWeight={"semibold"}
+                    fontSize={"large"}
+                    color={"blackAlpha.500"}
+                  >
+                    Figma
+                  </Text>
+                  <Text
+                    fontWeight={"semibold"}
+                    fontSize={"large"}
+                    color={"blackAlpha.500"}
+                    mt={"2"}
+                    w={"150px"}
+                  >
+                    Lorem Ipsum
+                  </Text>
+                </Box>
+              </Box>
+            </GridItem>
+            <GridItem w="100%" h="20" p="2" borderRadius="15px" bg="white">
+              <Box
+                display={"flex"}
+                w="65px"
+                h="9vh"
+                borderRadius="10px"
+                bg="red"
+                gap="5"
+              >
+                <Image
+                  borderRadius={"10px"}
+                  objectFit={"cover"}
+                  w="100%"
+                  src="https://s3-alpha.figma.com/hub/file/2892125217/716d53e1-341c-43a7-a634-d5e175b01bcb-cover.png"
+                />
+                <Box>
+                  <Text
+                    fontWeight={"semibold"}
+                    fontSize={"large"}
+                    color={"blackAlpha.500"}
+                  >
+                    Figma
+                  </Text>
+                  <Text
+                    fontWeight={"semibold"}
+                    fontSize={"large"}
+                    color={"blackAlpha.500"}
+                    mt={"2"}
+                    w={"150px"}
+                  >
+                    Lorem Ipsum
+                  </Text>
+                </Box>
+              </Box>
+            </GridItem>
+            <GridItem w="100%" h="20" p="2" borderRadius="15px" bg="white">
+              <Box
+                display={"flex"}
+                w="65px"
+                h="9vh"
+                borderRadius="10px"
+                bg="red"
+                gap="5"
+              >
+                <Image
+                  borderRadius={"10px"}
+                  objectFit={"cover"}
+                  w="100%"
+                  src="https://s3-alpha.figma.com/hub/file/2892125217/716d53e1-341c-43a7-a634-d5e175b01bcb-cover.png"
+                />
+                <Box>
+                  <Text
+                    fontWeight={"semibold"}
+                    fontSize={"large"}
+                    color={"blackAlpha.500"}
+                  >
+                    Figma
+                  </Text>
+                  <Text
+                    fontWeight={"semibold"}
+                    fontSize={"large"}
+                    color={"blackAlpha.500"}
+                    mt={"2"}
+                    w={"150px"}
+                  >
+                    Lorem Ipsum
+                  </Text>
+                </Box>
+              </Box>
+            </GridItem>
+            <GridItem w="100%" h="20" p="2" borderRadius="15px" bg="white">
+              <Box
+                display={"flex"}
+                w="65px"
+                h="9vh"
+                borderRadius="10px"
+                bg="red"
+                gap="5"
+              >
+                <Image
+                  borderRadius={"10px"}
+                  objectFit={"cover"}
+                  w="100%"
+                  src="https://s3-alpha.figma.com/hub/file/2892125217/716d53e1-341c-43a7-a634-d5e175b01bcb-cover.png"
+                />
+                <Box>
+                  <Text
+                    fontWeight={"semibold"}
+                    fontSize={"large"}
+                    color={"blackAlpha.500"}
+                  >
+                    Figma
+                  </Text>
+                  <Text
+                    fontWeight={"semibold"}
+                    fontSize={"large"}
+                    color={"blackAlpha.500"}
+                    mt={"2"}
+                    w={"150px"}
+                  >
+                    Lorem Ipsum
+                  </Text>
+                </Box>
+              </Box>
+            </GridItem>
+          </Grid>
+        </Box>
+      </Flex>
+    </Box>
   );
 }
 
